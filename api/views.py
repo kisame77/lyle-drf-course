@@ -1,11 +1,13 @@
 from django.db.models import Max
 from django.shortcuts import get_object_or_404
-from rest_framework import generics
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters, generics
 from rest_framework.decorators import api_view
 from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from api.filters import ProductFilter
 from api.models import Order, Product
 from api.serializers import OrderSerializer, ProductInfoSerializer, ProductSerializer
 
@@ -18,6 +20,15 @@ from api.serializers import OrderSerializer, ProductInfoSerializer, ProductSeria
 class ProductListCreateAPIView(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    # filterset_fields = ('name', 'price')
+    filterset_class = ProductFilter
+    filter_backends = [
+        DjangoFilterBackend,
+        filters.SearchFilter,
+        filters.OrderingFilter,
+    ]
+    search_fields = ["name", "description"]
+    ordering_fields = ["name", "price", "stock"]
 
     def get_permissions(self):
         self.permission_classes = [AllowAny]
