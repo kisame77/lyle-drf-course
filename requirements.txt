@@ -7,3 +7,4 @@ sqlparse==0.5.2
 tzdata==2024.2
 django-silk
 djangorestframework-simplejwt
+drf-spectacular
