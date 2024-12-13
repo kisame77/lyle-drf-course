@@ -1,7 +1,7 @@
 from django.db.models import Max
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters, generics
+from rest_framework import filters, generics, viewsets
 from rest_framework.decorators import api_view
 from rest_framework.pagination import LimitOffsetPagination, PageNumberPagination
 from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
@@ -37,7 +37,6 @@ class ProductListCreateAPIView(generics.ListCreateAPIView):
     # pagination_class.page_size_query_param = "size"
     # pagination_class.max_page_size = 6
     pagination_class = LimitOffsetPagination
-
 
     def get_permissions(self):
         self.permission_classes = [AllowAny]
@@ -88,20 +87,27 @@ class ProductDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
 #     return Response(serializer.data)
 
 
-class OrderListAPIView(generics.ListAPIView):
+class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.prefetch_related("items__product")
     serializer_class = OrderSerializer
+    permission_classes = [AllowAny]
+    pagination_class = None
 
 
-class UserOrderListAPIView(generics.ListAPIView):
-    queryset = Order.objects.prefetch_related("items__product")
-    serializer_class = OrderSerializer
-    permission_classes = [IsAuthenticated]
+# class OrderListAPIView(generics.ListAPIView):
+#     queryset = Order.objects.prefetch_related("items__product")
+#     serializer_class = OrderSerializer
 
-    def get_queryset(self):
-        user = self.request.user
-        qs = super().get_queryset()
-        return qs.filter(user=user)
+
+# class UserOrderListAPIView(generics.ListAPIView):
+#     queryset = Order.objects.prefetch_related("items__product")
+#     serializer_class = OrderSerializer
+#     permission_classes = [IsAuthenticated]
+
+#     def get_queryset(self):
+#         user = self.request.user
+#         qs = super().get_queryset()
+#         return qs.filter(user=user)
 
 
 class ProductInfoAPIView(APIView):
