@@ -69,3 +69,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY
 GET http://localhost:8000/user-orders/ HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczMzkwNTUwMywiaWF0IjoxNzMzODE5MTAzLCJqdGkiOiI1MTVkOTRlMzA1YTc0ZThmOGEwMDMwM2U5Njc0N2IxYyIsInVzZXJfaWQiOjF9.7YPYjuQ7EyOg1nK_Hxs5C9Sl8MO6aQu1D6a2Ajigeqg
 
+###
+
+GET http://localhost:8000/orders/ HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0NzY1NzMwLCJpYXQiOjE3MzQ3NjU0MzAsImp0aSI6IjMwY2QyZGZmMzlhYTQzMGRiNTI0NDE5YWU0ZmVmYzg0IiwidXNlcl9pZCI6MX0.fUykkfdjRDw3_2x6PfaJ7U74eZ_4zW1___oYC5_ww5g
+
+
+###
+
+GET http://localhost:8000/orders/7f4d8156-6b9a-4bee-afc4-3e402aab4245/ HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0NzY1NzMwLCJpYXQiOjE3MzQ3NjU0MzAsImp0aSI6IjMwY2QyZGZmMzlhYTQzMGRiNTI0NDE5YWU0ZmVmYzg0IiwidXNlcl9pZCI6MX0.fUykkfdjRDw3_2x6PfaJ7U74eZ_4zW1___oYC5_ww5g
+
+
+
+
